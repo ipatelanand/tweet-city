@@ -1,5 +1,6 @@
 <% if (currentUser) {%>
 <li>Welcome, <%=currentUser.username%></li>
+<li><a href="/user/edit/<%=currentUser._id%>">Account Settings</a></li>
 <li>
 	<form action="/session?_method=DELETE" method="post">
 		<input type="submit" value="Log Out" />

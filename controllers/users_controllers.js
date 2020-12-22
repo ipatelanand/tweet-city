@@ -18,4 +18,29 @@ users.post("/", (req, res) => {
 	})
 })
 
+users.get("/edit/:id", (req, res) => {
+	User.findById(req.params.id, (err, foundUser) => {
+		res.render("users/edit.ejs", {
+			currentUser: req.session.currentUser,
+			id: foundUser,
+		})
+	})
+})
+
+users.put("/edit/:id", (req, res) => {
+	User.findByIdAndUpdate(
+		req.params.id,
+		req.body,
+		{ new: true },
+		(err, updatedUser) => {
+			if (err) {
+				alert(err)
+			} else {
+				alert("successful")
+				res.redirect("/")
+			}
+		}
+	)
+})
+
 module.exports = users
