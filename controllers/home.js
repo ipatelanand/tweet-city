@@ -4,3 +4,5 @@ const home = express.Router()
 home.get("/", (req, res) => {
 	res.render("home.ejs")
 })
+
+module.exports = home
