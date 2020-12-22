@@ -1,0 +1,11 @@
+<% if (currentUser) {%>
+<li>Welcome, <%=currentUser.username%></li>
+<li>
+	<form action="/session?_method=DELETE" method="post">
+		<input type="submit" value="Log Out" />
+	</form>
+</li>
+<%} else {%>
+<li><a href="/user/new">Create New Account</a></li>
+<li><a href="/session/new">Log In</a></li>
+<%}%>
