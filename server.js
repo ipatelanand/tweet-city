@@ -24,9 +24,8 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(methodOverride("_method"))
 
-
-const homeController = require('./controllers/home.js')
-app.use('/home', homeController)
+// const homeController = require('./controllers/home.js')
+// app.use('/home', homeController)
 
 app.get("/", (req, res) => {
 	res.send("Hello World")
