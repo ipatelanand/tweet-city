@@ -16,10 +16,16 @@ home.get("/", (req, res) => {
 	})
 })
 
-home.get('/new', isAuthenticated, (req, res) => {
-	res.render('tweets/new.ejs', {
-	  currentUser = req.session.currentUser
-  })
+home.get("/new", isAuthenticated, (req, res) => {
+	res.render("tweets/new.ejs", {
+		currentUser: req.session.currentUser,
+	})
+})
+
+home.post("/", isAuthenticated, (req, res) => {
+	Tweet.create(req.body, (err, newTweet) => {
+		res.redirect("/")
+	})
 })
 
 home.get("/seed", isAuthenticated, (req, res) => {
@@ -33,7 +39,7 @@ home.get("/seed", isAuthenticated, (req, res) => {
 			},
 		],
 		(err, data) => {
-			res.send(data)
+			res.redirect("/")
 		}
 	)
 })

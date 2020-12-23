@@ -7,8 +7,23 @@
 	</head>
 	<body>
 		<h1>Create New Tweet</h1>
-        <form action="/home/new" method="POST">
-        <label for=""></label>
-        </form>
+		<form action="/home" method="POST">
+			<label for="label">User:</label>
+			<input
+				type="text"
+				name="username"
+				value="<%=currentUser.username%>"
+				readonly
+			/>
+			<label for="title">Title:</label>
+			<input type="text" name="title" required />
+			<label for="body">Body:</label>
+			<input type="textarea" name="body" required />
+			<label for="img">Img:</label>
+			<input type="text" name="img" optional />
+			<label for="privacy">Check if Public</label>
+			<input type="checkbox" name="privacy" />
+			<input type="submit" name="submit" />
+		</form>
 	</body>
 </html>

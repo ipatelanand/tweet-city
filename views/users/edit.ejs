@@ -9,7 +9,7 @@
 			<form action="/user/edit/<%=id.id%>?_method=PUT>" method="POST">
 				<label for="name">Username:<%=currentUser.username%></label>
 				<label for="password">Update password:</label>
-				<input type="password" name="password" required /><br />
+				<input type="password" name="password" optional /><br />
 				<input type="url" name="Update img" optional /><br />
 				<input type="submit" value="submit" />
 			</form>
