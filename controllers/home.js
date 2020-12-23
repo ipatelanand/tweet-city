@@ -16,6 +16,12 @@ home.get("/", (req, res) => {
 	})
 })
 
+home.get('/new', isAuthenticated, (req, res) => {
+	res.render('tweets/new.ejs', {
+	  currentUser = req.session.currentUser
+  })
+})
+
 home.get("/seed", isAuthenticated, (req, res) => {
 	Tweet.create(
 		[
