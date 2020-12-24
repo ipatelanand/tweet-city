@@ -27,16 +27,15 @@ users.get("/edit/:id", (req, res) => {
 	})
 })
 
-users.put("/edit/:id", (req, res) => {
+users.post("/edit/:id", (req, res) => {
 	User.findByIdAndUpdate(
 		req.params.id,
-		req.body,
+		{ $set: { password: req.body.password } },
 		{ new: true },
 		(err, updatedUser) => {
 			if (err) {
-				alert(err)
+				console.log(err)
 			} else {
-				alert("successful")
 				res.redirect("/")
 			}
 		}

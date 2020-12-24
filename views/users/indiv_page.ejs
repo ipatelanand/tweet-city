@@ -7,6 +7,12 @@
 	</head>
 	<body>
 		<h1>User: <%=view_user.username%></h1>
+		<form
+			action="/home/<%=currentUser._id%>/addFollower/<%=view_user._id%>?_method=PUT>"
+			method="POST"
+		>
+			<button>Follow</button>
+		</form>
 		<h3>tweet:<%=JSON.stringify(tweets)%></h3>
 	</body>
 </html>

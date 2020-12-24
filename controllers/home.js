@@ -15,6 +15,7 @@ const findTweetsByUser = (id, page, req, res) => {
 	User.findById(id, (err, userId) => {
 		Tweet.find({ username: userId.username }, (err, allTweetsFromUser) => {
 			res.render(page, {
+				currentUser: req.session.currentUser,
 				view_user: userId,
 				tweets: allTweetsFromUser,
 			})
@@ -28,7 +29,7 @@ home.get("/", (req, res) => {
 	})
 })
 
-home.get("/allusers", (req, res) => {
+home.get("/allusers", isAuthenticated, (req, res) => {
 	User.find({}, (err, data) => {
 		res.render("users/show_all.ejs", {
 			currentUser: req.session.currentUser,
@@ -51,6 +52,16 @@ home.post("/", isAuthenticated, (req, res) => {
 	Tweet.create(req.body, (err, newTweet) => {
 		res.redirect("/")
 	})
+})
+
+home.post("/:currentUser/addFollower/:id", isAuthenticated, (req, res) => {
+	User.findByIdAndUpdate(
+		req.params.currentUser,
+		{ $push: { following: req.params.id } },
+		(err, newFollower) => {
+			res.redirect("/")
+		}
+	)
 })
 
 home.get("/seed", isAuthenticated, (req, res) => {

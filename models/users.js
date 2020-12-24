@@ -5,6 +5,8 @@ const userSchema = Schema({
 	username: { type: String, unique: true, required: true },
 	password: { type: String, required: true },
 	img: { type: String },
+	followers: { type: Array },
+	following: { type: Array },
 })
 
 const User = mongoose.model("User", userSchema)
