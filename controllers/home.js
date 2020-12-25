@@ -64,7 +64,7 @@ home.get("/new", isAuthenticated, (req, res) => {
 	})
 })
 
-home.get("/user/show/:id", (req, res) => {
+home.get("/user/show/:id", isAuthenticated, (req, res) => {
 	findTweetsByUser(req.params.id, "users/indiv_page.ejs", req, res)
 })
 
