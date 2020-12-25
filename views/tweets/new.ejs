@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<h1>Create New Tweet</h1>
-		<form action="/home" method="POST">
+		<form action="/home/loggedin/<%currentUser._id%>" method="POST">
 			<label for="label">User:</label>
 			<input
 				type="text"

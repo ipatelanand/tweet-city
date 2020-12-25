@@ -8,7 +8,7 @@
 	<body>
 		<h1>User: <%=view_user.username%></h1>
 		<form
-			action="/home/<%=currentUser._id%>/addFollower/<%=view_user._id%>?_method=PUT>"
+			action="/home/<%=currentUser._id%>/addFollower/<%=view_user.username%>?_method=PUT>"
 			method="POST"
 		>
 			<button>Follow</button>

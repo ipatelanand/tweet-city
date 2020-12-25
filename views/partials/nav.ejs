@@ -1,6 +1,8 @@
 <% if (currentUser) {%>
 <li>Welcome, <%=currentUser.username%></li>
 <li><a href="/user/edit/<%=currentUser._id%>">Account Settings</a></li>
+<li><a href="/home/loggedin/<%=currentUser._id%>">Home</a></li>
+<li><%=JSON.stringify(currentUser)%></li>
 <li>
 	<form action="/session?_method=DELETE" method="POST">
 		<input type="submit" value="Log Out" />
