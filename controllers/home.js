@@ -24,62 +24,20 @@ const findTweetsByUser = (id, page, req, res) => {
 	})
 }
 
-// const showAllTweetsFollowing = (currentUserId, page, req, res) => {
-// 	User.findById(currentUserId, (err, curUse) => {
-// 		const followsIdArr = curUse.following
-
-// 		// const insideFunc = (Arr) => {
-// 		// 	let followersTweets = []
-// 		// 	for (let i = 0; i < followsIdArr.length; i++) {
-// 		// 		User.findById(followsIdArr[i], (err, foundUser) => {
-// 		// 			Tweet.find(
-// 		// 				{ username: foundUser.username },
-// 		// 				(err, allTweetsFromUser) => {
-// 		// 					// console.log(allTweetsFromUser, i)
-// 		// 					return allTweetsFromUser
-// 		// 				}
-// 		// 			)
-// 		// 		})
-// 		// 	}
-// 		// }
-
-// 		const getTweets = (ArrId) => {
-// 			let index = 0
-// 			let tweets = []
-// 			User.findById(ArrId[index], (err, foundUser) => {
-// 				Tweet.find({ username: foundUser.username }, (err, foundTweets) => {
-// 					tweets.push(foundTweets)
-// 				})
-// 			})
-// 			console.log(tweets)
-// 		}
-
-// 		getTweets(followsIdArr)
-// 		// console.log(insideFunc(followsIdArr))
-
-// 		// console.log(tweets)
-// 		res.render(page, {
-// 			currentUser: req.session.currentUser,
-// 			// tweets: tweets,
-// 		})
-// 	})
-// }
-
 home.get("/", (req, res) => {
 	res.render("home.ejs", {
 		currentUser: req.session.currentUser,
 	})
 })
 
-home.get("/loggedin/:id", (req, res) => {
+home.get("/loggedin/:id", isAuthenticated, (req, res) => {
 	res.render("users/user_home.ejs", {
 		currentUser: req.session.currentUser,
-
 		Tweet: Tweet,
 	})
 })
 
-home.get("/loggedin/:id/:data", (req, res) => {
+home.get("/loggedin/:id/:data", isAuthenticated, (req, res) => {
 	let data = req.params.data.split(",")
 	console.log(data)
 
@@ -112,7 +70,7 @@ home.get("/user/show/:id", (req, res) => {
 
 home.post("/:id", isAuthenticated, (req, res) => {
 	Tweet.create(req.body, (err, newTweet) => {
-		res.redirect("/loggedin/req.params.id")
+		res.redirect(`/loggedin/${req.params.id}`)
 	})
 })
 
