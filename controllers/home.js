@@ -70,7 +70,7 @@ home.get("/user/show/:id", (req, res) => {
 
 home.post("/:id", isAuthenticated, (req, res) => {
 	Tweet.create(req.body, (err, newTweet) => {
-		res.redirect(`/loggedin/${req.params.id}`)
+		res.redirect(`/`)
 	})
 })
 
