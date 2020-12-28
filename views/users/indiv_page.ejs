@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<%- include ('../partials/head.ejs') %>
+
+		<title><%=view_user.username%>'s Page | Tweet-City</title>
 	</head>
 	<body>
+		<nav><%- include ('../partials/nav.ejs') %></nav>
 		<h1>User: <%=view_user.username%></h1>
 		<form
 			action="/home/<%=currentUser._id%>/addFollower/<%=view_user.username%>?_method=PUT>"
@@ -13,6 +14,26 @@
 		>
 			<button>Follow</button>
 		</form>
-		<h3>tweet:<%=JSON.stringify(tweets)%></h3>
+		<div class="container-fluid">
+			
+			<% tweets.reverse()
+			for (let i=0; i<tweets.length; i++) {%>
+				<div class="container tweetcontainer">
+					<div class="container userTweetInfo">
+						
+						<h5><%=tweets[i].username%></h5>
+						<p class="tweet-body"><%=tweets[i].body%></p>
+						<% if (tweets[i].img !== '') {%>
+							<img src="<%=tweets[i].img%>" class='tweet-img' alt="tweet-img-not-found">
+						<%}%>
+					</div>
+					
+					
+					<%=tweets[i]%>
+				</div>
+				
+			<%}%>
+			
+		</div>
 	</body>
 </html>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<%- include ('../partials/head.ejs') %>
 		<title>All Users</title>
 	</head>
-	<h1>Here is a list of all current users</h1>
 	<nav><%- include ('../partials/nav.ejs') %></nav>
+	<h1>Here is a list of all current users</h1>
+	
 	<div class="container">
         <% for (let i=0; i<data.length; i++) {%>
         <ul>

@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<%- include ('../partials/head.ejs') %>
 		<title>Document</title>
 	</head>
 	<body>
-		<h1><%=JSON.stringify(tweets)%></h1>
+		<nav><%- include ('../partials/nav.ejs') %></nav>
+
+	<div class="container-fluid">
+			
+			<% tweets.reverse()
+			for (let i=0; i<tweets.length; i++) {%>
+				<div class="container tweetcontainer">
+					<div class="container userTweetInfo">
+						
+						<h5><%=tweets[i].username%></h5>
+						<p class="tweet-body"><%=tweets[i].body%></p>
+						<% if (tweets[i].img !== '') {%>
+							<div class="text-center"><img src="<%=tweets[i].img%>" class='tweet-img' alt="tweet-img-not-found"></div>
+							
+						<%}%>
+					</div>
+					
+					
+					<%=tweets[i]%>
+				</div>
+				
+			<%}%>
+			
+		</div>
+		
 	</body>
 </html>

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<%- include ('../partials/head.ejs') %>
+
 		<title>Edit User</title>
 	</head>
 	<body>
+		<nav><%- include ('../partials/nav.ejs') %></nav>
 		<div>
 			<h1>Edit</h1>
 			<form action="/user/edit/<%=id.id%>?_method=PUT>" method="POST">
