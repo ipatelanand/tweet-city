@@ -2,3 +2,8 @@
 	border: 5px solid blue;
 	margin-bottom: 5px;
 }
+
+body {
+	background-color: #15202b;
+	color: white;
+}

@@ -5,13 +5,38 @@
 		<title>Home | <%=currentUser.username%> | Tweet-City</title>
 	</head>
 	<body>
-		<nav><%- include ('../partials/nav.ejs') %></nav>
+			<nav><%- include ('../partials/nav.ejs') %></nav>
 
-		<h1>User Home</h1>
 
-		<h2><%=currentUser.following%></h2>
-		<a href="/home/loggedin/<%=currentUser._id%>/<%=currentUser.following%>"
-			>test</a
-		>
+	<div class="container-fluid userpage">
+		<% if (currentUser.img !== '') {%>
+			<img src="<%=currentUser.img%>" alt="profile-img">
+		<%}%>
+		<% if (currentUser.biography !== '') {%>
+			<p class="biography"><%=currentUser.biography%</p>
+		<%}%>
+	</div>		
+	<div class="container-fluid">
+			
+			<% tweets.reverse()
+			for (let i=0; i<tweets.length; i++) {%>
+				<div class="container tweetcontainer">
+					<div class="container userTweetInfo">
+						
+						<h5><%=tweets[i].username%></h5>
+						<p class="tweet-body"><%=tweets[i].body%></p>
+						<% if (tweets[i].img !== '') {%>
+							<div class="text-center"><img src="<%=tweets[i].img%>" class='tweet-img' alt="tweet-img-not-found"></div>
+							
+						<%}%>
+					</div>
+					
+					
+					
+				</div>
+				
+			<%}%>
+			
+		</div>
 	</body>
 </html>

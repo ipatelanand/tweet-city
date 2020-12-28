@@ -2,7 +2,6 @@ const express = require("express")
 const Tweet = require("../models/tweets")
 const User = require("../models/users")
 const home = express.Router()
-const async = require("async")
 
 const isAuthenticated = (req, res, next) => {
 	if (req.session.currentUser) {
@@ -70,7 +69,9 @@ home.get("/user/show/:id", isAuthenticated, (req, res) => {
 
 home.post("/:id", isAuthenticated, (req, res) => {
 	Tweet.create(req.body, (err, newTweet) => {
-		res.redirect(`/`)
+		res.redirect(
+			`/home/loggedin/<%=currentUser._id%>/<%=currentUser.following%>`
+		)
 	})
 })
 

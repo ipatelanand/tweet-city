@@ -14,6 +14,17 @@
 		>
 			<button>Follow</button>
 		</form>
+		<div class="container-fluid userpage">
+		<% if (view_user.img !== '') {%>
+			<img src="<%=view_user.img%>" alt="profile-img">
+		<%}%>
+		<% if (view_user.biography !== '') {%>
+			<p class="biography"><%=view_user.biography%></p>
+		<%}%>
+		<% if (view_user.backgroundimg !== '') {%>
+			<img src="<%=view_user.backgroundimg%>" class="background-img" alt="backgroundimg-not-found">
+		<%}%>
+	</div>		
 		<div class="container-fluid">
 			
 			<% tweets.reverse()

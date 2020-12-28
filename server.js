@@ -41,10 +41,15 @@ app.use("/user", userController)
 const sessionController = require("./controllers/sessions.js")
 app.use("/session", sessionController)
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) =>
+{
+
 	res.redirect("/home")
 })
 
 app.listen(PORT, () => {
 	console.log("Listening on port: ", PORT)
 })
+
+
+
