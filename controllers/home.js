@@ -75,6 +75,24 @@ home.post("/:id", isAuthenticated, (req, res) => {
 	})
 })
 
+home.get("/editTweet/:id", (req, res) => {
+	res.render("tweets/edit.ejs", {
+		currentUser: req.session.currentUser,
+		tweet_id: req.params.id,
+	})
+})
+
+home.post("/editTweet/:id", (req, res) => {
+	Tweet.findByIdAndUpdate(
+		req.params.id,
+		{ $set: { body: req.body.body, img: req.body.img } },
+		{ new: true },
+		(err, updatedTweet) => {
+			res.redirect("/")
+		}
+	)
+})
+
 home.post("/:currentUser/addFollower/:id", isAuthenticated, (req, res) => {
 	User.findByIdAndUpdate(
 		req.params.currentUser,
