@@ -1,11 +1,10 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-
-
 const tweetSchema = Schema(
 	{
 		username: { type: String, required: true },
+		profile_img: { type: String },
 		title: { type: String },
 		body: { type: String, required: true },
 		img: { type: String },

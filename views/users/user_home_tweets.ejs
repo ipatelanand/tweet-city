@@ -2,18 +2,18 @@
 <html lang="en">
 	<head>
 		<%- include ('../partials/head.ejs') %>
-		<title>Document</title>
+		<title>Tweet-City | Feed</title>
 	</head>
 	<body>
 		<nav><%- include ('../partials/nav.ejs') %></nav>
 
 	<div class="container-fluid">
-			
+			<% console.log(currentUser)%>
 			<% tweets.reverse()
 			for (let i=0; i<tweets.length; i++) {%>
 				<div class="container tweetcontainer">
 					<div class="container userTweetInfo">
-						
+						<img src="<%=tweets[i].profile_img%>" alt="err_in_profile_img">
 						<h5><%=tweets[i].username%></h5>
 						<p class="tweet-body"><%=tweets[i].body%></p>
 						<% if (tweets[i].img !== '') {%>

@@ -8,12 +8,18 @@
 	<body>
 		<nav><%- include ('../partials/nav.ejs') %></nav>
 		<h1>User: <%=view_user.username%></h1>
+		
+		<% if (currentUser.username !== view_user.username) {%>
 		<form
 			action="/home/<%=currentUser._id%>/addFollower/<%=view_user.username%>?_method=PUT>"
 			method="POST"
 		>
 			<button>Follow</button>
 		</form>
+		<%} else {%> <form action="/user/edit/<%=currentUser._id%>"> <button>Edit User</button></form> <%}%>
+		
+
+
 		<div class="container-fluid userpage">
 		<% if (view_user.img !== '') {%>
 			<img src="<%=view_user.img%>" alt="profile-img">

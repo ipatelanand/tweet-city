@@ -11,6 +11,7 @@ users.get("/new", (req, res) => {
 
 users.post("/", (req, res) => {
 	req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+	req.body.following = [req.body.username]
 	User.create(req.body, (err, createdUser) => {
 		console.log(err)
 		console.log("User was created", createdUser)
@@ -30,7 +31,13 @@ users.get("/edit/:id", (req, res) => {
 users.post("/edit/:id", (req, res) => {
 	User.findByIdAndUpdate(
 		req.params.id,
-		{ $set: { password: req.body.password } },
+		{
+			$set: {
+				biography: req.body.biography,
+				img: req.body.img,
+				backgroundimg: req.body.backgroundimg,
+			},
+		},
 		{ new: true },
 		(err, updatedUser) => {
 			if (err) {

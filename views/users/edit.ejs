@@ -8,14 +8,15 @@
 	<body>
 		<nav><%- include ('../partials/nav.ejs') %></nav>
 		<div>
-			<h1>Edit</h1>
+			<h1>Edit User</h1>
 			<form action="/user/edit/<%=id.id%>?_method=PUT>" method="POST">
-				<label for="name">Username:<%=currentUser.username%></label>
-				<label for="password">Update password:</label>
-				<input type="password" name="password" optional /><br />
-				<label for="img"></label>
-				<input type="url" name="img" optional /><br />
-				<input type="submit" value="submit" />
+				<label for="biography">Biography:</label>
+				<input type="textarea" name="biography" />
+				<label for="img">Profile Image:</label>
+				<input type="text" name="img" />
+				<label for="backgroundimg">Background Image:</label>
+				<input type="text" name="backgroundimg" />
+				<input type="submit" />
 			</form>
 		</div>
 	</body>
