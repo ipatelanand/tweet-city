@@ -93,6 +93,12 @@ home.post("/editTweet/:id", (req, res) => {
 	)
 })
 
+home.delete("/deletetweet/:id", (req, res) => {
+	Tweet.findByIdAndDelete(req.params.id, (err, deletedtweet) => {
+		res.redirect("/")
+	})
+})
+
 home.post("/:currentUser/addFollower/:id", isAuthenticated, (req, res) => {
 	User.findByIdAndUpdate(
 		req.params.currentUser,

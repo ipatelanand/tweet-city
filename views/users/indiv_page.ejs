@@ -44,6 +44,7 @@
 							<img src="<%=tweets[i].img%>" class='tweet-img' alt="tweet-img-not-found">
 						<%}%>
 						<a href="/home/editTweet/<%=tweets[i]._id%>"><button>Edit</button></a>
+						<form action="/home/deletetweet/<%=tweets[i]._id%>?_method=DELETE" method="POST"><button>Delete</button></form>
 					</div>
 					
 					
