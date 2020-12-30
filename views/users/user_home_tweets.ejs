@@ -13,7 +13,7 @@
 			for (let i=0; i<tweets.length; i++) {%>
 				<div class="container tweetcontainer">
 					<div class="container userTweetInfo">
-						<img src="<%=tweets[i].profile_img%>" alt="err_in_profile_img">
+						<img class="profile_img_in_tweet" src="<%=tweets[i].profile_img%>" alt="err_in_profile_img">
 						<h5><%=tweets[i].username%></h5>
 						<p class="tweet-body"><%=tweets[i].body%></p>
 						<% if (tweets[i].img !== '') {%>

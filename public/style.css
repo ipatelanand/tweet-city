@@ -3,6 +3,11 @@
 	margin-bottom: 5px;
 }
 
+.profile_img_in_tweet {
+	height: 75px;
+	width: 75px;
+}
+
 body {
 	background-color: #15202b;
 	color: white;
