@@ -8,6 +8,11 @@
 	width: 75px;
 }
 
+.profileimg-in-userpage {
+	height: 150px;
+	width: 150px;
+}
+
 body {
 	background-color: #15202b;
 	color: white;
